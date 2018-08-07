@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       home: new MyHomePage(title: 'Tanamo Inc'),
     );
   }
+
 }
 
 class MyHomePage extends StatefulWidget {
