@@ -1,6 +1,6 @@
 # intro_7
 
-A new Flutter Application.
+My Speed Calculator.
 
 ## Getting Started
 

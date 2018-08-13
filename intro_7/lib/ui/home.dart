@@ -43,6 +43,7 @@ class Stat extends State<Home> {
                     keyboardType: TextInputType.number,
                     decoration: new InputDecoration(
                         labelText: 'Input Your Time',
+                        hintText: 'in seconds',
                         icon: new Icon(
                           Icons.timer,
                         )),
@@ -53,6 +54,7 @@ class Stat extends State<Home> {
                     keyboardType: TextInputType.number,
                     decoration: new InputDecoration(
                         labelText: 'Input Your Distance',
+                        hintText: 'in meters',
                         icon: new Icon(
                           Icons.directions_run,
                         )),
@@ -65,7 +67,7 @@ class Stat extends State<Home> {
                     children: <Widget>[
                       new Radio<int>(
                           activeColor: Colors.brown,
-                          value: 0,
+                          value: 1,
                           groupValue: radioValue,
                           onChanged: radioListener),
                       new Text(
@@ -74,7 +76,7 @@ class Stat extends State<Home> {
                       ),
                       new Radio<int>(
                           activeColor: Colors.red,
-                          value: 1,
+                          value: 2,
                           groupValue: radioValue,
                           onChanged: radioListener),
                       new Text(
@@ -120,21 +122,30 @@ class Stat extends State<Home> {
     setState(() {
       radioValue = value;
       switch (radioValue) {
-        case 0:
+        case 1:
           _finalResult = calcSpeed(_contrTime.text, _contrDist.text);
           _output =
               "Your speed in m/s is given as: ${_finalResult.toStringAsFixed(1)}";
           break;
-        case 1:
+        case 2:
           _finalResult = calcSpeed(_contrTime.text, _contrDist.text);
 
-          _finalResult = (_finalResult / (1000 * 3600));
+          _finalResult = ((_finalResult) * (3.6));
           _output =
               "Your speed in km/h is given as: ${_finalResult.toStringAsFixed(1)}";
           break;
         default:
-          print("Nothing selected!");
+          print("!!!");
       }
     });
   }
+
+/** Convention from m/s to km/s.
+ *
+ **  1 m/s is given by 3.6 km/h.
+ *
+ * Speed is given as distance(D) covered over given time period(T).
+ *
+ **/
+
 }
